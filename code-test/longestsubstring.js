@@ -20,4 +20,4 @@ const lengthOfLongestSubstring = function(s) {
     return longest;
 };
 
-lengthOfLongestSubstring('abcdaefbc')
+console.info(lengthOfLongestSubstring('abcdaefbc'))

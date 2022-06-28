@@ -22,10 +22,10 @@ function solution(str) {
 
 console.info(solution("We are  test. This Coder  ?"))
 
-const obj = { a: "aaa", b: "bbb", c: "ccc", d: "ddd" };
+// const obj = { a: "aaa", b: "bbb", c: "ccc", d: "ddd" };
 
-for (const [key, value] of Object.entries(object1)) {
-    console.log(`${key}: ${value}`);
-  }
+// for (const [key, value] of Object.entries(object1)) {
+//     console.log(`${key}: ${value}`);
+//   }
   
-Object.assign({}, ...Object.entries(obj).map(([a,b]) => ({ [b]: a })))
+// Object.assign({}, ...Object.entries(obj).map(([a,b]) => ({ [b]: a })))
