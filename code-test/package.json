@@ -12,5 +12,12 @@
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.14"
-  }
+  },
+  "description": "Js and Ts code challanged solutions",
+  "devDependencies": {},
+  "keywords": [
+    "typescript",
+    "javascript"
+  ],
+  "author": "Mudassar Ali"
 }
