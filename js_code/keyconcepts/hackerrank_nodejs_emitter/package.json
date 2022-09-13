@@ -1,0 +1,48 @@
+{
+    "name": "event-emitters",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "prestart": "npm install",
+      "pretest": "npm install",
+      "test": "./node_modules/.bin/mocha test"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "bluebird": "^3.7.2",
+      "chai": "^4.2.0",
+      "mocha": "^7.1.1",
+      "mocha-junit-reporter": "^1.23.3",
+      "mocha-multi-reporters": "^1.1.7",
+      "sinon": "^9.0.0"
+    }
+  }
+
+
+/*
+Enter your query below.
+Please append a semicolon ";" at the end of the query
+*/
+
+// SELECT
+//     ci.city_name, p.product_name,result.total
+// from  city ci
+// join (select cu.city_id city_id, pr.id product_id, FORMAT(sum(ii.line_total_price),2)  as total
+//     from product pr
+//     join invoice_item ii
+//         on  pr.id = ii.product_id
+//     join invoice inv
+//         on inv.id = ii.invoice_id
+//     join customer cu
+//         on cu.id = inv.customer_id
+//     group by cu.city_id, pr.id
+//     order by cu.city_id, pr.id, total) as result
+// on result.city_id = ci.id
+// join product p
+//     on p.id = result.product_id
+// order by result.total desc, ci.city_name, p.product_name
+
