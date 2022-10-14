@@ -23,6 +23,6 @@ function solution(N, K) {
     return parseInt(arr.join(""))
 }
 
-
+console.info(solution(444, 999));
 console.info(solution(911, 999));
 

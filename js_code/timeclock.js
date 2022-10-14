@@ -11,3 +11,5 @@ function timeConversion(str) {
     return ([h,m,s].join(':'));
 
 }
+
+console.info(timeConversion("5:00:00PM"))

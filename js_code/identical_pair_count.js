@@ -1,4 +1,3 @@
-// https://www.geeksforgeeks.org/maximum-product-subarray/
 function solution(arr)
 {
     let n = arr.length;

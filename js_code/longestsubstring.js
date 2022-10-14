@@ -1,23 +1,26 @@
-const lengthOfLongestSubstring = function(s) {
-    if(s.length <= 1) return s.length;
-    
-    const seen = {};
-    let left = 0, longest = 0;
-    
-    for(let right = 0; right < s.length; right++) {
-        const currentChar = s[right];
-        const previouslySeenChar = seen[currentChar];
-        
-        if(previouslySeenChar >= left) {
-          left = previouslySeenChar + 1;
-        }
-        
-        seen[currentChar] = right;
-        
-        longest = Math.max(longest, right - left + 1);
-    }
-    
-    return longest;
-};
+const lengthOfLongestSubstring = function (s) {
+  let seen = {}
+  let left = index = longest = 0;
 
-console.info(lengthOfLongestSubstring('abcdaefbc'))
+  let iterator = s[Symbol.iterator]()
+  let data = iterator.next();
+
+  while (!data.done) {
+    const val = data.value;
+    if (seen.hasOwnProperty(val)) {
+      longest = Math.max(longest, index - left + 1)
+      left = index;
+      seen = {[val] : index};
+    } else { //not seen
+      seen[val] = index;
+    }
+    longest = Math.max(longest, index - left + 1)
+    index++;
+    data = iterator.next()
+  }
+  return longest;
+}
+console.info(lengthOfLongestSubstring('abcdaefbcz'))
+console.info(lengthOfLongestSubstring('a'))
+console.info(lengthOfLongestSubstring(''))
+console.info(lengthOfLongestSubstring('abc'))

@@ -1,5 +1,5 @@
 //rege/ string formatter/ loops/ functiona map reduce filter / match exp/ date manupalte
-
+//https://www.javascripttutorial.net/es6/javascript-array-from/
 /**
  * Regex
  *  search
@@ -13,12 +13,15 @@ let str = "We are  test. This test Coder  ?";
 const regexp = /test/g;
 regexp.test("test")  //tue of alse
 console.info(str.search(/test/i))  // for checking -1 if no match else index of match
-console.info(str.match(/test/ig)) //return all match
+//return all match note i mean case insenstive and g means global which effects out as it returns all matches with no index
+console.info(str.match(/test/ig)) 
 
+// for loop all match note regex should have g(global flag) like /test/g
 while ((match = regexp.exec(str)) !== null) {
     console.log(`Found ${match[0]} start=${match.index} end=${regexp.lastIndex}.`);
 }
 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 const match = [...str.matchAll(/test/g)] //matchAll gives iterative hence convert to arr each item ["test", index: 0, groups: ,input]
 console.info(str.replace(/test/ig, 'aaa'))  // i case insenstive g means all recursive
 
@@ -28,6 +31,8 @@ let str1 = "2006-06-06"
 const [d, m, y] = str1.split(/-/g);
 console.info(d, m, y)
 
+
+"Hi there".replace(/(\w+) (\w+)/g, "$2 $1"); // outputs "there hi"
 
 //--------------string formatter
 const greeting = 'Hello';
@@ -62,15 +67,40 @@ Object.values(arr).forEach(function (v) {
     console.log(v);
 });
 
-//------------fitler map reduce/ functiional porgramming
+// ---- array methods
+let numbers = [30, 40];
+numbers.pop() // [30];
+numbers.push(50) // [30, 40 ,50];
+numbers.unshift(20); // [20, 30, 40]
+numbers.shift(); // [30]
+
+function arrayFromArgs() {
+    return Array.prototype.slice.call(arguments); //arguments will prove all pass arguments
+}
+var fruits = arrayFromArgs('Apple', 'Orange', 'Banana');
+
+
+const numbers2 = [1, 2, [3, 4, 5, [6, 7]]];
+const flatNumbers = numbers2.flat(2); //[1, 2, 3, 4, 5, 6, 7] if dont know level pass infinity 
+
+//------------find fitler map reduce/ functiional porgramming
 
 const arr2 = [1, 2, 3, 4, 5, 6];
+
+console.info(arr2.find((item) => item == 3))  //return 3
+console.info(arr2.findIndex((item) => item == 3))  //return 3
+arr2.indexOf(3)
+arr2.lastIndexOf(3)
+[NaN].indexOf(NaN); // -1  so use includes
+[NaN].includes(NaN); // true
 
 console.info(arr2.filter((item) => !(item % 2)))  //event
 
 console.info(arr2.map((item) => Math.pow(item, 2)))  //power 2
 
 console.info(arr2.reduce((carry, item) => carry + item, 0))  //sum reducer
+
+arr2.every( e  => e > 0); // checks all elements pass the test
 
 
 //------------match switch

@@ -6,9 +6,9 @@
 //10.20.30.45
 
 function checkIpAdress(l, r, ip) {
-    const left = l.split(".").map((item) => { return parseInt(item)})
-    const right = r.split(".").map((item) => { return parseInt(item)})
-    const ipAddr = ip.split(".").map((item) => { return parseInt(item)})
+    const left = l.split(".").map(parseInt(item))
+    const right = r.split(".").map(parseInt(item))
+    const ipAddr = ip.split(".").map(parseInt(item))
 
     for (const [key, value] of Object.entries(ipAddr)) {
         if ((value < left[key])

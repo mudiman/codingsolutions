@@ -15,8 +15,8 @@
 function createCheckDigit(membershipId) {
   let sum = 9999;
   while (parseInt(sum) > 9) {
-  sum = membershipId.split("").reduce((a,b) => parseInt(a)+parseInt(b) ).toString();
-}
+    sum = membershipId.split("").reduce((a, b) => parseInt(a) + parseInt(b)).toString();
+  }
 
   return sum;
 }
