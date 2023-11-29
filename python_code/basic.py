@@ -7,6 +7,8 @@
 #  *  extract
 #  */
 
+#coding styles PEP 8
+#https://realpython.com/python-pep8/#:~:text=PEP%208%20suggests%20lines%20should,to%20run%20over%20several%20lines.
 
 #https://realpython.com/python-coding-interview-tips/
 
@@ -147,3 +149,21 @@ breakpoint()
 
 #--- character code
 ord('a')
+
+# prefix and postfix sum
+def prefix(arr):
+    res = []
+    sum = 0
+    for no in arr:
+        sum += no
+        res.append(sum)
+    return res
+
+
+def postfix(arr):
+    res = []
+    sum = 0
+    for i in range(len(arr) - 1, -1, -1):
+        sum += arr[i]
+        res = [sum] + res
+    return res

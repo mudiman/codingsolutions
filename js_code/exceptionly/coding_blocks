@@ -1,0 +1,84 @@
+Question 7 of 8
+0:24:14
+DESC
+RULES
+README
+SETTINGS
+Codewriting
+
+You are given a rectangular board divided into a uniform grid (square cells). Some cells of the board are occupied with blocks, and others are empty. You are trying to add more and more blocks to the board, and your task is to fill the first column with them. Your can add a block to the field in the following way: first, you choose the row index, then you throw the new block into the chosen row from the left. The block appears in the leftmost cell of the row and starts moving to the right, until it reaches another block or the end of the row. When that happens, the block starts falling down until in reaches another block or the last row.
+
+For example, if the board looks like this
+
+...#..
+...#..
+.#....
+blocks are denoted by '#' and empty cells are denoted by '.'
+
+and you throw a block into the first or the second row from the top, it will end up like this:
+
+...#..
+...#..
+.##...
+Your task is to calculate the minimum and the maximum number of moves required to fill the first column of the board with blocks.
+
+Example
+
+For
+
+field = [['.', '#', '#'], 
+         ['#', '.', '.'], 
+         ['.', '.', '.']]
+the output should be
+solution(field) = [4, 4].
+
+We need to choose the first row once and the third row three times.
+
+
+
+For
+
+field = [['.', '#', '#'], 
+         ['.', '.', '#'],
+         ['.', '.', '.']]
+the output should be
+solution(field) = [3, 6].
+
+To minimize the number of moves we need to choose the first row three times.
+To maximize this number, we need to choose the third row three times, then the second row twice, and the first row one time.
+
+
+
+Input/Output
+
+[execution time limit] 5 seconds (ts)
+
+[input] array.array.char field
+
+A non-empty rectangular matrix of characters representing a field.
+
+Guaranteed constraints:
+1 ≤ field.length ≤ 12,
+1 ≤ field[0].length ≤ 12.
+
+[output] array.integer
+
+Array of two elements, where the first element is the minimum number of moves and the second one in the maximum number of moves required to fill the first column. It is guaranteed that the maximum number of moves doesn't exceed 12.
+
+[TypeScript] Syntax Tips
+
+function helloWorld(name: string): string {
+    console.log("This prints to the console when you Run Tests");
+    return "Hello, " + name;
+}
+
+4
+function solution(field: string[][]): number[] {
+
+}
+
+TESTS
+CUSTOM TESTS
+MORE
+0/300
+message?: any, The {@link console.info()} function is an alias for {@link console.log()}., hint

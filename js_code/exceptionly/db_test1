@@ -1,0 +1,71 @@
+http://codesnippetfromhackerrank.blogspot.com/2017/
+
+Question 4 of 8
+0:00:00
++
+0:00:11
+DESC
+RULES
+README
+SETTINGS
+Codewriting
+
+You’re in charge of your team’s budget. You're given the table budget_plan, which describes all the planned purchases, and the table allowed_purchases, which describes the amount that can be spent in certain time periods.
+
+The budget_plan table contains the following columns:
+
+monday_date - the unique date of the Monday of the corresponding week;
+purchase_sum - the sum of the planned expenditure for the corresponding week.
+All dates in this table fall in the same year.
+The allowable_purchases table contains the following columns:
+
+id - the unique ID of the limitation;
+left_bound - the unique left bound of the time period, represented by the number of the week (1-based);
+right_bound - the unique right bound of the time period, represented by the number of the week (1-based);
+value - the allowable sum that can be spent during the given left and right bounds, inclusive.
+The segments of the time periods don't intersect with one other. The weeks are numbered sequentially from the first week. Week 1 is the first full week of the year, meaning that its Monday is part of the current year.
+Your task is to write a select statement which returns the columns id and loss, where the value of loss is either 0 (if the budget limit with this id was not exceeded) or the amount of money by which the planned purchase exceeded the budget, sorted by id.
+
+Note: Week numbers should be calculated according to the ISO Standard.
+
+Example
+
+For given table budget_plan
+
+monday_date	purchase_sum
+2016-02-08	10
+2016-02-15	12
+2016-06-13	5
+2016-06-27	13
+and table allowed_purchases
+
+id	left_bound	right_bound	value
+1	5	8	30
+2	23	26	10
+the output should be
+
+id	loss
+1	0
+2	8
+In the table budget_plan, the Mondays correspond to the weeks with numbers 6, 7, 24, and 26 respectively. For the first time period, we add up 10 and 12 to get 22. Since 22 is smaller than 30, the loss is 0. For the second time period, we add up 5 and 13 to get 18. Since 18 is greater than 10, the allowable expenditure for this time period, the answer is 18 - 10 = 8.
+
+[execution time limit] 10 seconds (psql)
+PostgreSQL
+v14.2
+1234567
+/*Your PostgreSQL script goes here*/
+
+
+ SELECT ae.id,
+       CASE
+         WHEN Sum(ep.purchase_sum) > ae.value  THEN (Sum(ep.purchase_sum) - ae.value )
+         ELSE 0
+       end AS loss
+FROM   allowed_purchases AS ae
+       LEFT JOIN (SELECT date_part('week', monday_date::timestamp) AS week,
+                         purchase_sum
+                  FROM   budget_plan) AS ep
+              ON ae.left_bound <= ep.week
+                 AND ep.week <= ae.right_bound
+GROUP  BY ae.id,ae.value
+ORDER  BY ae.id;

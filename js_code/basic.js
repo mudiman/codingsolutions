@@ -56,6 +56,7 @@ console.info(String(num).padStart(10, ' '))
 
 const arr = { "a": 1, "b": 2, "c": 3 }
 for (key in arr) { console.info(key) }
+
 for (const [key, value] of Object.entries(arr)) {
     console.log(key, value);
 }
@@ -69,8 +70,8 @@ Object.values(arr).forEach(function (v) {
 
 // ---- array methods
 let numbers = [30, 40];
-numbers.pop() // [30];
-numbers.push(50) // [30, 40 ,50];
+numbers.pop(); // [30];
+numbers.push(50); // [30, 40 ,50];
 numbers.unshift(20); // [20, 30, 40]
 numbers.shift(); // [30]
 
@@ -95,17 +96,10 @@ arr2.lastIndexOf(3)
 [NaN].includes(NaN); // true
 
 console.info(arr2.filter((item) => !(item % 2)))  //event
-
 console.info(arr2.map((item) => Math.pow(item, 2)))  //power 2
-
 console.info(arr2.reduce((carry, item) => carry + item, 0))  //sum reducer
-
 arr2.every( e  => e > 0); // checks all elements pass the test
-
-
 //------------match switch
-
-
 
 //------ date
 
@@ -136,12 +130,9 @@ const points = [40, 100, 1, 5, 25, 10];
 points.sort(function (a, b) { return b - a });
 //https://www.w3schools.com/js/js_array_sort.asp
 
-
 // ------array slicing
-
 var array = [1, 2, 3, 4, 5];
 console.log(array.splice(2));  //original array effected while slice doesnt
-
 
 // ------------Helpers
 //sort

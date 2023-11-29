@@ -1,0 +1,42 @@
+
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-01-01 09:13:12', 'buttonClicked', 1, NULL);
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-01-02 09:14:15', 'pageReloaded', 3, NULL);
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-02-02 10:15:13', 'pageRendered', 2, NULL);
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-02-03 11:15:23', 'commentWritten', 3, NULL);
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-03-03 11:15:15', 'avatarUpdated', 2, 2);
+INSERT INTO public.tracks
+(received_at, event_name, anonymous_id, user_id)
+VALUES('2016-03-04 11:15:24', 'statusUpdated', 1, 1);
+
+
+
+output
+1	buttonClicked	statusUpdated
+2	pageRendered	avatarUpdated
+3	commentWritten	
+
+select a1.anonymous_id anonym_id, a1.event_name last_null, a2.event_name as first_notnull
+from
+(select t.anonymous_id, event_name 
+from tracks t, 
+(select anonymous_id, max(received_at) from tracks where user_id is null
+group by anonymous_id) an
+where an.max = t.received_at) a1
+left join 
+(select t.anonymous_id, event_name 
+from tracks t, 
+(select anonymous_id, max(received_at) from tracks where user_id  is not null
+group by anonymous_id) an
+where an.max = t.received_at) a2
+on a1.anonymous_id = a2.anonymous_id
+order by anonym_id; 

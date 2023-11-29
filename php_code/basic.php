@@ -84,5 +84,9 @@ $str = "We are  test. This test Coder  ?";
 // print_r(date_parse("2006-12-12 10:00:00.5 +1 week +1 hour"));
 
 
+// sorting
+$numbers = array(4,6,2,22,11);
+sort($numbers);
+print_r($numbers);
 
 ?>
